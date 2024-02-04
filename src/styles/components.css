@@ -1,0 +1,179 @@
+/* PRIMARY BUTTON STYLING */
+
+.primaryBtn {
+  background-color: transparent;
+  border: 2px solid #000;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 1.25em 2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  font-size: 13px;
+}
+
+
+.primaryBtn .primaryBtnText {
+  font-size: 1.125em;
+  line-height: 1.33333em;
+  display: block;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  color: black;
+}
+
+.primaryBtn .top-key {
+  height: 2px;
+  width: 1.5625rem;
+  top: -2px;
+  left: 0.625rem;
+  position: absolute;
+  background: #fff;
+  transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.primaryBtn .bottom-key-1 {
+  height: 2px;
+  width: 1.5625rem;
+  right: 1.875rem;
+  bottom: -2px;
+  position: absolute;
+  background: #fff;
+  transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.primaryBtn .bottom-key-2 {
+  height: 2px;
+  width: 0.625rem;
+  right: 0.625rem;
+  bottom: -2px;
+  position: absolute;
+  background: #fff;
+  transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.primaryBtn:hover {
+  color: white;
+  background: black;
+}
+
+.primaryBtn:hover .primaryBtnText {
+  color: white;
+  padding: 0px 1.5em;
+}
+
+.primaryBtn:hover .top-key {
+  left: -2px;
+  width: 0px;
+}
+
+.primaryBtn:hover .bottom-key-1,
+.primaryBtn:hover .bottom-key-2 {
+  right: 0;
+  width: 0;
+}
+
+/* PRODUCT CARD */
+
+.productImage-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.productImage-hover img,
+.singleProductImage img {
+  transition: all 0.7s ease;
+  transform: scale(1);
+}
+
+.productImage-hover:hover,
+.singleProductImage:hover .viewBtn {
+  opacity: 1;
+}
+
+.productImage-hover:hover img,
+.singleProductImage:hover img {
+  transform: scale(1.15);
+  transition: all 0.7s ease;
+}
+
+.singleProductImage .viewBtn {
+  opacity: 0;
+  transition: all 0.5s ease-out;
+
+}
+
+.productImage-hover:hover .viewBtn,
+.singleProductImage:hover .viewBtn {
+  animation: btnAnimation 0.5s ease-in;
+}
+
+
+/* Quick Actions button */
+.viewBtn {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  color: #141414;
+  background: ghostwhite;
+}
+
+.viewBtn span {
+  position: relative;
+  z-index: 10;
+  color: #141414;
+  transition: color 0.4s;
+}
+
+.viewBtn:hover span {
+  color: white;
+}
+
+.viewBtn::before,
+.viewBtn::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.viewBtn::before {
+  content: "";
+  background: ghostwhite;
+  width: 120%;
+  left: -10%;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.viewBtn:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
+
+@keyframes btnAnimation {
+  from {
+    transform: translateY(-10px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+}
