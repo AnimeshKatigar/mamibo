@@ -1,35 +1,36 @@
-import duoRings from "../assets/images/2Rings.png";
-import BigOwlRing from "../assets/images/BigOwlRing.png";
-import EyeBallRing from "../assets/images/EyeBallRing.png";
+import RoseateRadiance from "../assets/images/RoseateRadiance.jpg";
+import RubyWhimsy from "../assets/images/RubyWhimsy.jpg";
+import ScarletElegance from "../assets/images/ScarletElegance.jpg";
 
-const newDrops = [
+const products = [
   {
-    _id:"p9",
-    title: "Owl & Eagle Duo Ring - Wisdom Meets Soaring Strength",
-    price: "449",
-    sizes: ["20"],
-    img: duoRings,
+    _id: "p4",
+    title: "Roseate Radiance Co-ord set",
     description:
-      "Unite the wisdom of the owl with the soaring strength of the eagle in our captivating Owl & Eagle Duo Ring. This unique accessory beautifully combines two majestic creatures, each symbolizing distinct qualities, to create a ring that resonates with both intellect and might.",
+      "The white bralette sets a foundation of allure, accentuating the neckline with a touch of modern sensuality. The jacket, with its deep, rich hue, adds a layer of sophistication and warmth",
     extraInformation:
-      "Embrace the duality of wisdom and strength with the Owl & Eagle Duo Ring. Elevate your style with this symbolic piece that pays homage to the magnificent qualities of two iconic birds. Order your Owl & Eagle Duo Ring now and carry the essence of both creatures with you wherever you go",
+      "The floor-length yoke pants in matching maroon brings a graceful flow to the silhouette, creating a harmonious balance between contemporary flair and classic grace.",
+    sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    price: "5499",
+    img: RoseateRadiance,
   },
   {
-    _id:"p4",
-    title: "Hoot Ring - Whimsical Elegance in Every Note",
+    _id: "p5",
+    title: "Ruby Whimsy Fusion Set",
+    price: "4499",
+    sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    img: RubyWhimsy,
     description:
-      "Capture the charm of the night with our Hoot Ring, a whimsical accessory that echoes the enchanting melody of an owl's hoot. This delightful ring features a carefully crafted owl perched at its center, exuding a sense of playfulness and timeless elegance.",
+      "The maroon velvet corset serves as the centerpiece, embracing the silhouette with opulent elegance. The rich, velvety texture adds a touch of regality, creating a sumptuous and tactile allure.",
     extraInformation:
-      "Let your style sing with the enchanting notes of the Hoot Ring. Embrace the whimsy and elegance found in the owl's hoot. Order your Hoot Ring now and add a touch of magic to your jewelry collection",
-    price: "249",
-    img: BigOwlRing,
+      "This ensemble is a celebration of contrasts, where the softness of velvet meets the crispness of white, resulting in a harmonious blend of glamour and modernity. The combination of deep maroon and pure white creates a captivating visual harmony.",
   },
   {
-    _id:"p6",
-    title: "Eyeball Ring - Unleash the Gaze of Mystique",
-    price: "299",
-    img: EyeBallRing,
-    sizes: ["20", "21"],
+    _id: "p6",
+    title: "Scarlet Elegance Set",
+    price: "6499",
+    img: ScarletElegance,
+    sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:
       "Dare to be different with our Eyeball Ring, a captivating and unconventional accessory that adds a touch of mystique to your style. This unique ring features a meticulously crafted eyeball at its center, casting an enigmatic gaze that captivates attention and sparks intrigue.",
     extraInformation:
@@ -37,4 +38,4 @@ const newDrops = [
   },
 ];
 
-export default newDrops;
+export default products;

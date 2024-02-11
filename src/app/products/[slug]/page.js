@@ -24,6 +24,7 @@ export default function Page({ params }) {
     .slice(0, 4);
 
   const [count, setCount] = useState(1);
+  const [selectedSize, setSelectedSize] = useState(productDetails.sizes[0]);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(
     productDetails?.variants ? 0 : null
   );
@@ -87,23 +88,23 @@ export default function Page({ params }) {
           <div className="font-GothamLight text-black/70 text-base py-3 ">
             {productDetails?.description}
           </div>
-          {productDetails?.variants && (
+          {productDetails?.sizes && (
             <>
               <p className="text-[14px] text-slate-500 font-GothamBold mb-3">
-                Variants
+                Sizes
               </p>
               <div className="flex gap-x-3">
-                {productDetails.variants.map((variant, index) => (
+                {productDetails.sizes.map((size) => (
                   <div
                     className={`${
-                      index !== selectedVariantIndex
+                      size !== selectedSize
                         ? "text-[#141414] bg-white"
                         : "bg-[#141414] text-white"
                     } transition-all cursor-pointer border border-[#141414] w-fit rounded-full px-2 py-1 text-sm font-GothamLight `}
-                    key={variant?.variant}
-                    onClick={() => setSelectedVariantIndex(index)}
+                    key={size}
+                    onClick={() => setSelectedSize(size)}
                   >
-                    {variant.variant}
+                    {size}
                   </div>
                 ))}
               </div>
@@ -119,33 +120,8 @@ export default function Page({ params }) {
               Add to cart
             </button>
           </div>
-          <div className="py-3">
-            <p>
-              <strong>Key Features:</strong>
-            </p>
-            <ul>
-              <li>
-                Crafted from&nbsp;<span>Stainless Steel</span>
-                <span>&nbsp;</span>for durability and style
-              </li>
-              <li>Versatile enough for everyday wear or special occasions</li>
-              <li>Available in various sizes to suit individual preferences</li>
-              <li>
-                This piece deserves to be shown off but it sometimes needs some
-                rest, too; store it safely in an air-tight box when not in use.
-              </li>
-              <li>
-                Drink at least 3 liters of water every day, but don&apos;t let
-                it fall on the jewelry; keep away from water.
-              </li>
-              <li>
-                Chemicals look good in chemistry textbooks. On jewellery?&nbsp;
-                <strong>Naaah!</strong>
-              </li>
-            </ul>
-            {productDetails?.extraInformation?.length && (
-              <p className="my-3">{productDetails?.extraInformation}</p>
-            )}
+          <div className="font-GothamLight text-black/70 text-base py-3">
+            {productDetails?.extraInformation}
           </div>
         </div>
       </div>

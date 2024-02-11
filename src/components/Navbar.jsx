@@ -3,11 +3,10 @@ import { useState } from "react";
 import { Spin as Hamburger } from "hamburger-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import logoWhite from "../../public/assets/logos/LogoWhiteBg.png";
-import logoBlack from "../../public/assets/logos/LogoBlackBg.png";
+import logoBlack from "../../public/assets/logos/logo.png";
 import Image from "next/image";
 import Link from "next/link";
-import BagIcon from "../../public/assets/icons/BagWhite.svg";
+import BagIcon from "../../public/assets/icons/Bag.svg";
 import CartMenu from "./Layovers/CartMenu";
 import {
   Sheet,
@@ -49,7 +48,7 @@ const Navbar = () => {
   const routes = [
     { label: "Home", path: "/" },
     { label: "Shop", path: "/products" },
-    { label: "Collections", path: "/collections" },
+    // { label: "Collections", path: "/collections" },
   ];
 
   const checkActiveRoute = (path) => {
@@ -68,9 +67,7 @@ const Navbar = () => {
       // animate="visible"
       // variants={navbarVariants}
       // initial="hidden"
-      className={`justify-between  ${
-        pathname !== "/" ? "navbar-bg" : "navbar-darkBg"
-      } px-[3rem] flex items-center sm:py-[1rem] sm:max-lg:py-3 max-lg:px-[1.25rem] max-sm:py-1 max-sm:h-[56px] fixed w-screen z-30 top-0 font-GothamMedium h-[70px]`}
+      className={`justify-between navbar-darkBg pl-[3rem] pr-[68px] flex items-center sm:py-[1rem] sm:max-lg:py-3 max-lg:pl-[1.25rem] max-lg:pr-10 max-sm:py-1 max-sm:h-[56px] fixed w-screen z-30 top-0 font-GothamMedium h-[70px]`}
     >
       <div className="md:hidden">
         <Hamburger
@@ -119,17 +116,17 @@ const Navbar = () => {
         </AnimatePresence>
       </div>
       <Link href="/">
-        <Image src={logoBlack} alt="logo-dark" className="h-16 w-16" />
+        <Image src={logoBlack} alt="logo-dark" className="w-24 bg-blend-multiply contrast-100" />
       </Link>
       <div className="hidden md:flex items-center gap-x-3 h-full">
         {routes.map((val) => (
           <Link
             key={val.path}
             href={val.path}
-            className={`hover:text-white hover:border-b transition-all ${
+            className={`hover:text-black hover:border-b transition-all ${
               checkActiveRoute(val.path)
-                ? "border-b text-white"
-                : "text-white/60"
+                ? "border-b text-black"
+                : "text-black/60"
             }`}
           >
             {val.label}

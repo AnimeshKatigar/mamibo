@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import Image from "next/image";
-import LandingPage from "../../public/assets/images/LandingPage.png";
+import LandingPage from "../../public/assets/images/LandingPage.jpg";
 import Reveal from "@/components/Reveal";
 import BestSellers from "@/components/Sections/BestSellers";
 import NewDrops from "@/components/Sections/NewDrops";
@@ -16,22 +16,19 @@ export default function Home() {
       >
         <Image
           src={LandingPage}
-          alt="Ring-Image"
-          className="w-full object-cover"
+          alt="LandingPage"
+          className="w-full object-cover pt-10"
         />
-        <PrimaryBtn
-          title="View All"
-          customClasses="absolute bottom-3 left-1/2 -translate-x-1/2"
-        />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 font-GothamMedium  text-black">
+          Where Fashion Meets Passion!
+          <a className="border-2 block mx-auto border-black/70 text-black/70 hover:border-black transition-all hover:text-black py-2 px-4 mt-2 w-fit cursor-pointer" href="/products">
+            Explore
+          </a>
+        </div>
       </Reveal>
-      {/* <h1 className="uppercase text-[100px] text-black w-1/2 font-GothamBlack">
-          For the Genz
-        </h1>
-        <div className="h-32 w-full bg-red-950" /> */}
-      {/* </div> */}
       <div className="px-[5%] md:px-[10%] w-full py-8">
-        <BestSellers/>
-        <NewDrops/>
+        <BestSellers />
+        <NewDrops />
       </div>
     </main>
   );
