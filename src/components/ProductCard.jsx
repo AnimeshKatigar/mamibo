@@ -53,7 +53,7 @@ const ProductCard = ({ singlePhoto = false, details }) => {
                   : // ? details.variants?.[details.variants.length - 1].img
                     details?.img
               }
-              className="w-full aspect-square object-fit"
+              className="w-full aspect-[3/4] object-fit"
               alt="image"
             />
           </Link>

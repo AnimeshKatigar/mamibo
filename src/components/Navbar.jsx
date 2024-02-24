@@ -67,7 +67,7 @@ const Navbar = () => {
       // animate="visible"
       // variants={navbarVariants}
       // initial="hidden"
-      className={`justify-between navbar-darkBg pl-[3rem] pr-[68px] flex items-center sm:py-[1rem] sm:max-lg:py-3 max-lg:pl-[1.25rem] max-lg:pr-10 max-sm:py-1 max-sm:h-[56px] fixed w-screen z-30 top-0 font-GothamMedium h-[70px]`}
+      className={`justify-between navbar-darkBg pl-[3rem] pr-[68px] flex items-center sm:py-[1rem] sm:max-lg:py-3 max-lg:pl-[1.25rem] max-lg:pr-10 max-sm:py-1 max-sm:h-[56px] fixed w-screen z-30 top-0 font-GothamMedium h-[70px] shadow-md`}
     >
       <div className="md:hidden">
         <Hamburger
@@ -116,7 +116,11 @@ const Navbar = () => {
         </AnimatePresence>
       </div>
       <Link href="/">
-        <Image src={logoBlack} alt="logo-dark" className="w-24 bg-blend-multiply contrast-100" />
+        <Image
+          src={logoBlack}
+          alt="logo-dark"
+          className="w-24 bg-blend-multiply contrast-100"
+        />
       </Link>
       <div className="hidden md:flex items-center gap-x-3 h-full">
         {routes.map((val) => (

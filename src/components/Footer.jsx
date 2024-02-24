@@ -98,13 +98,13 @@ const Footer = () => {
           <div className="w-full md:w-1/3 px-2 text-left text-black">
             <h3>About Us</h3>
             <p className="text-justify italics font-GothamLight mt-3 text-black/60">
-              At Mamibo, we&apos;re dedicated to redefining fashion by
-              curating exclusive, trend-setting pieces that inspire confidence
-              and individuality. With a commitment to quality and style, we
-              strive to empower every individual to express themselves through
-              their clothing. Join us in embracing fashion as a form of
-              self-expression, and let your style speak volumes. Connect with us
-              to stay updated on the latest trends and exclusive offers.
+              It is a fashion brand with contemporary indo-western style form
+              that highlights the shape of the beauty essence of the body.
+              Fabrics have beautiful shine, flawless, subtle, lightweight
+              delicate texture. Women who want to make their figure look more
+              expressive and highlight using minimal accessories as per design.
+              The brand focuses on women&apos;s wear garment enhances their natural
+              curves and adds a lot more elegance to their natural look..
             </p>
           </div>
 

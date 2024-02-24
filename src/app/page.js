@@ -20,7 +20,7 @@ export default function Home() {
           className="w-full object-cover pt-10"
         />
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 font-GothamMedium  text-black">
-          Where Fashion Meets Passion!
+          The Essence of Beauty!
           <a className="border-2 block mx-auto border-black/70 text-black/70 hover:border-black transition-all hover:text-black py-2 px-4 mt-2 w-fit cursor-pointer" href="/products">
             Explore
           </a>

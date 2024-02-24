@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Heart, ShoppingBag  } from 'lucide-react';
 
 const CartMenu = ({ triggerComponent, closeComponent }) => {
   return (
@@ -21,9 +22,8 @@ const CartMenu = ({ triggerComponent, closeComponent }) => {
             <SheetTitle className="font-GothamMedium text-lg">Shopping Cart</SheetTitle>
           </SheetHeader>
           <div className="flex w-[80%] justify-between border border-[#141414] divide-x divide-[#141414]">
-            <div className="">Home</div>
-            <div className="">Name</div>
-            <div className="">Username</div>
+            <div className=""><Heart/></div>
+            <div className=""><ShoppingBag/></div>
           </div>
           <SheetFooter>
             <SheetClose asChild>{closeComponent()}</SheetClose>
