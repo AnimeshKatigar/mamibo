@@ -5,6 +5,9 @@ import RoseateRadiance from "../assets/images/RoseateRadiance.jpg";
 import RubyWhimsy from "../assets/images/RubyWhimsy.jpg";
 import ScarletElegance from "../assets/images/ScarletElegance.jpg";
 import WhimsicalCoord from "../assets/images/WhimsicalCoord.jpg";
+import BlazeCoord from "../assets/images/BlazeCoord.jpg";
+import RegalBlush from "../assets/images/RegalBlush.jpg";
+import OnePieceChic from "../assets/images/OnePieceChic.jpg";
 
 const products = [
   {
@@ -17,11 +20,12 @@ const products = [
     price: "7,499",
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     img: RoyalScarlet,
+    sizeNote:`Model is wearing a size 'XS' and is 5'7"`
   },
   {
     _id: "p2",
     title: "Crimson Skater Mini Dress",
-    price: "6499",
+    price: "6,499",
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:
       " The off-shoulder design of the dress showcases a hint of sophistication while embracing a touch of flirtatious charm.",
@@ -32,7 +36,7 @@ const products = [
   {
     _id: "p3",
     title: "Radiant snowfall co-rd set",
-    price: "3999",
+    price: "3,999",
     description:
       "Opt for a crisp and modern aesthetic with a white puff sleeves crop top, adding a touch of feminity. Teaming it up with bold red short pants injects a burst of energy ans shoecases a lively, confident style that's perfect for casual outings for social gatherings.",
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
@@ -46,13 +50,13 @@ const products = [
     extraInformation:
       "The floor-length yoke pants in matching maroon brings a graceful flow to the silhouette, creating a harmonious balance between contemporary flair and classic grace.",
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
-    price: "5499",
+    price: "5,499",
     img: RoseateRadiance,
   },
   {
     _id: "p5",
     title: "Ruby Whimsy Fusion Set",
-    price: "4499",
+    price: "4,499",
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     img: RubyWhimsy,
     description:
@@ -63,7 +67,7 @@ const products = [
   {
     _id: "p6",
     title: "Scarlet Elegance Set",
-    price: "6499",
+    price: "6,499",
     img: ScarletElegance,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:
@@ -74,12 +78,45 @@ const products = [
   {
     _id: "p7",
     title: "Whimsical Co-ord Set",
-    price: "4999",
+    price: "4,999",
     img: WhimsicalCoord,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:
       "The crop top's playful puff adds a hint of modern flair, creating a delightful contrast with the structured formality of the formal pants. This duo strikes the perfect balance between chic and polished, making it suitable for a range of occasions, from daytime events to sophisticated evenings",extraInformation:
       "Ideal for those who appreciated a versatile yet stylish ensemble comfort and grace.",
+  },
+  {
+    _id: "p8",
+    title: "One-piece Chic Couture",
+    price: "4,499",
+    img: OnePieceChic,
+    sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    description:
+      "This short dress blends modern sophistication with timeless allure, offering a perfect balance of sensuality and refinement. The luxurious fabric, intricate detailing, and flattering silhouette make it a slow-stopping choice for any occasion.Its a celebration of feminity, a manifestation of style that captivates with every step.",
+      extraInformation:
+  "The deep hues of the fabric enhances the overall allure, making a bold statement that transcends trends.",
+  },
+  {
+    _id: "p9",
+    title: "Regal Blush Co-ord Set",
+    price: "5,499",
+    img: RegalBlush,
+    sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    description:
+      "Embrace regal sophistication with this ensemble featuring a leg-of-mutton crop top in a striking reddish-pink hue seamlessly paired with floor-length yoke pants in a rich maroon shade. The resplendent combination exudes an air of elegance, as the voluminous sleeves of the crop top effortlessly balance the sleek silhouette of the yoke pants.",
+      extraInformation:
+      "This ensemble is a harmonious fusion of bold colors and graceful design.",
+  },
+  {
+    _id: "p10",
+    title: "Blaze Co-ord Set",
+    price: "3,999",
+    img: BlazeCoord,
+    sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    description:
+      "The white bralette sets the foundation with a touch of allure, while the crop red jacket elevates the ensemble with its vibrant and eye-catching hue. Paired effortlessly with a chic pair of short pants, this ensemble strikes the perfect balance between edgy and stylish.",
+      extraInformation:
+      "The short pants add a playful and modern touch, ensuring comfort without compromising on sophistication.",
   },
 ];
 

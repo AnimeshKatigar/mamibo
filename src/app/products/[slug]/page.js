@@ -16,6 +16,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import SizeChart from "@/components/Layovers/SizeChart";
 
 export default function Page({ params }) {
   const productDetails = products.filter((val) => val._id === params.slug)[0];
@@ -49,7 +50,7 @@ export default function Page({ params }) {
                   : productDetails?.img?.src
               }
               alt="Big Product Image"
-              className="w-full h-auto object-contain xl:max-h-[550px] xl:object-cover"
+              className="w-full h-auto object-contain xl:max-h-[550px]"
             />
           </Zoom>
           {productDetails?.variants && (
@@ -90,10 +91,19 @@ export default function Page({ params }) {
           </div>
           {productDetails?.sizes && (
             <>
-              <p className="text-[14px] text-slate-500 font-GothamBold mb-3">
-                Sizes
-              </p>
-              <div className="flex gap-x-3">
+              <div className="flex gap-x-10 items-center  mb-3">
+                <p className="text-[14px] text-slate-500 font-GothamBold">
+                  Select Size
+                </p>
+                <SizeChart
+                  dialogTriggerComponent={()=>
+                    <p className="text-[14px] cursor-pointer underline underline-offset-2 text-black font-GothamBold">
+                      Size Chart &gt;
+                    </p>
+                  }
+                />
+              </div>
+              <div className="flex gap-x-3 flex-wrap">
                 {productDetails.sizes.map((size) => (
                   <div
                     className={`${
