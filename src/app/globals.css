@@ -43,6 +43,14 @@
     /* backdrop-filter: blur(100px); */
 }
 
+@font-face {
+    font-family: DreamAvenue;
+    src: url(../../public/assets/font/DreamAvenue.ttf) format('truetype');
+    /* font-weight: 900; */
+    font-style: normal;
+    font-display: swap;
+}
+
 .navbar-darkBg {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(64px)
@@ -53,6 +61,9 @@ li {
     margin-left: 1rem;
 }
 
+*{
+    font-family: DreamAvenue !important;
+}
 
 h1,
 h2,
