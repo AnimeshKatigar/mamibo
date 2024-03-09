@@ -62,8 +62,25 @@ li {
 }
 
 *{
-    font-family: 'Courier New', Courier !important;
+    font-family: '__Montserrat_b1da2a', '__Montserrat_Fallback_b1da2a' !important;
+    font-weight: 500;
+    font-style: normal;
+    /* font-family: 'Courier New', Courier !important; */
 }
+
+.font-GothamBlack{
+    font-weight: 900 !important;
+}
+.font-GothamBold{
+    font-weight: 700 !important;
+}
+.font-GothamLight{
+    font-weight: 300 !important;
+}
+.font-GothamMedium{
+    font-weight: 500 !important;
+}
+
 
 h1,
 h2,

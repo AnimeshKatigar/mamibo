@@ -17,12 +17,18 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily: {
-        GothamLight: ["Gotham-Light"],
-        GothamMedium: ["Gotham-Medium"],
-        GothamBold: ["Gotham-Bold"],
-        GothamBlack: ["Gotham-Black"],
-      },
+      // fontFamily: {
+      //   GothamLight: ["Gotham-Light"],
+      //   GothamMedium: ["Gotham-Medium"],
+      //   GothamBold: ["Gotham-Bold"],
+      //   GothamBlack: ["Gotham-Black"],
+      // },
+      // fontWeight:{
+      //   GothamLight: 300,
+      //   GothamMedium: 500,
+      //   GothamBold: 700,
+      //   GothamBlack: 900,
+      // },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
