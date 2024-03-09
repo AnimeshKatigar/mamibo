@@ -7,7 +7,7 @@ const ProductCard = ({ singlePhoto = false, details }) => {
   const link = `/products/${details?._id}`;
   return (
     <div className="p-2 ">
-      <div className="relative cursor-pointer hover:shadow-xl ">
+      <div className="relative cursor-pointer hover:shadow-xl overflow-clip">
         {/* {!singlePhoto && (
           <Link href={link}>
             <Image

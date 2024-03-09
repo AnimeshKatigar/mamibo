@@ -12,7 +12,7 @@ const BestSellers = () => {
           BestSellers
         </h2>
       </Reveal>
-      <div className="flex gap-x-4 items-start overflow-x-auto no-scrollbar">
+      <div className="flex gap-x-4 items-start overflow-x-auto no-scrollbar overflow-y-clip">
         {bestSellerProducts.map((product, i) => (
           <Reveal customClassName="min-w-[320px] w-1/3" key={product.title} delay={0.05 * (i + 1)}>
             <ProductCard

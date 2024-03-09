@@ -74,7 +74,7 @@ const Navbar = () => {
           direction="left"
           toggled={burgerMenuToggle}
           toggle={setBurgerMenuToggle}
-          color="white"
+          color="rgba(0,0,0,0.40)"
           hideOutline={true}
         />
 
@@ -105,9 +105,9 @@ const Navbar = () => {
                       </div>
                     ))}
                   </nav>
-                  <p className=" py-2 text-center border-t bg-black/10  font-GothamLight text-black text-sm">
+                  <p className=" py-2 text-center border-t bg-black/10 font-GothamLight text-black text-sm">
                     © {new Date().getFullYear()}{" "}
-                    <span className="text-lg my-2">|</span> ZenG
+                    <span className="text-lg my-2">|</span> MAMIBO
                   </p>
                 </motion.div>
               </div>

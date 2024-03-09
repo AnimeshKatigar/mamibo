@@ -33,7 +33,7 @@ export default function Page({ params }) {
   return (
     <main className="pb-10 px-[5%] md:px-[10%] w-full">
       <div
-        className={`mt-28 relative pb-3 border-b border-black/10 mb-4 flex flex-col lg:flex-row`}
+        className="mt-20 lg:mt-28 relative pb-3 border-b border-black/10 mb-4 flex flex-col lg:flex-row"
       >
         <div
           className={`lg:w-1/2 lg:pr-4 ${
@@ -79,11 +79,11 @@ export default function Page({ params }) {
             </Carousel>
           )}
         </div>
-        <div className="lg:w-1/2 lg:pl-4">
-          <h2 className="text-black text-xl lg:text-[32px] lg:leading-9 font-GothamMedium">
+        <div className="mt-2 lg:mt-0 lg:w-1/2 lg:pl-4">
+          <h2 className=" text-black text-xl lg:text-[32px] lg:leading-9 font-GothamMedium">
             {productDetails?.title}
           </h2>
-          <p className="font-GothamLight text-lg text-black py-5 border-b border-black/10">
+          <p className="font-GothamLight text-lg text-black py-3 lg:py-5 border-b border-black/10">
             ₹ {productDetails?.price}
           </p>
           <div className="font-GothamLight text-black/70 text-base py-3 ">
@@ -91,7 +91,7 @@ export default function Page({ params }) {
           </div>
           {productDetails?.sizes && (
             <>
-              <div className="flex gap-x-10 items-center  mb-3">
+              <div className="flex gap-x-10 items-center justify-between pr-3 mb-3">
                 <p className="text-[14px] text-slate-500 font-GothamBold">
                   Select Size
                 </p>
@@ -103,7 +103,7 @@ export default function Page({ params }) {
                   }
                 />
               </div>
-              <div className="flex gap-x-3 flex-wrap">
+              <div className="flex gap-3 flex-wrap">
                 {productDetails.sizes.map((size) => (
                   <div
                     className={`${

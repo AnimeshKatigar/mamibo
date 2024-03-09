@@ -12,7 +12,7 @@ const NewDrops = () => {
           New Drops
         </h2>
       </Reveal>
-      <div className="flex gap-x-4 overflow-x-auto no-scrollbar">
+      <div className="flex gap-x-4 overflow-x-auto no-scrollbar overflow-y-clip">
         {newDrops.map((product, i) => (
           <Reveal
             customClassName="min-w-[320px] w-1/3"
