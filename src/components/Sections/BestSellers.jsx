@@ -14,7 +14,7 @@ const BestSellers = () => {
       </Reveal>
       <div className="flex gap-x-4 items-start overflow-x-auto no-scrollbar overflow-y-clip">
         {bestSellerProducts.map((product, i) => (
-          <Reveal customClassName="min-w-[320px] w-1/3" key={product.title} delay={0.05 * (i + 1)}>
+          <Reveal customClassName="max-md:min-w-[250px] md:min-w-[320px] w-1/3" key={product.title} delay={0.05 * (i + 1)}>
             <ProductCard
               details={product}
               singlePhoto={product?.variants ? false : true}
@@ -23,7 +23,7 @@ const BestSellers = () => {
         ))}
       </div>
       <Reveal>
-        <Link href="/shop">
+        <Link href="/products">
         <PrimaryBtn customClasses="w-fit mx-auto my-4 text-center" />
         </Link>
       </Reveal>

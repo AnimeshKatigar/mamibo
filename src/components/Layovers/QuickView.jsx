@@ -66,25 +66,25 @@ export default function QuickView({
 
   const link = `/products/${data?._id}`;
 
-  if (!isDesktop)
-    return (
-      <Drawer>
-        <DrawerTrigger asChild>{dialogTriggerComponent()}</DrawerTrigger>
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-            <DrawerDescription>This action cannot be undone.</DrawerDescription>
-          </DrawerHeader>
-          <DrawerFooter>
-            <DrawerClose asChild>{dialogCloseComponent()}</DrawerClose>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
-    );
+  // if (!isDesktop)
+  //   return (
+  //     <Drawer>
+  //       <DrawerTrigger asChild>{dialogTriggerComponent()}</DrawerTrigger>
+  //       <DrawerContent>
+  //         <DrawerHeader>
+  //           <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+  //           <DrawerDescription>This action cannot be undone.</DrawerDescription>
+  //         </DrawerHeader>
+  //         <DrawerFooter>
+  //           <DrawerClose asChild>{dialogCloseComponent()}</DrawerClose>
+  //         </DrawerFooter>
+  //       </DrawerContent>
+  //     </Drawer>
+  //   );
   return (
     <Dialog>
       <DialogTrigger asChild>{dialogTriggerComponent()}</DialogTrigger>
-      <DialogContent className=" sm:max-w-[60vw] max-h-[80vh] overflow-y-auto lg:flex p-0 outline-none border-none rounded-none">
+      <DialogContent className="w-[90vw] sm:max-w-[60vw] max-h-[60vh] no-scrollbar md:max-h-[80vh] overflow-y-auto lg:flex p-0 outline-none border-none rounded-none">
         <Image
           src={
             data?.variants
@@ -92,9 +92,9 @@ export default function QuickView({
               : data?.img
           }
           alt="product-img"
-          className="w-1/2"
+          className="w-full aspect-[3/4] md:mt-auto md:w-1/2 p-3 md:p-0"
         />
-        <div className="overflow-y-auto p-2 ">
+        <div className="max-md:h-auto md:overflow-y-auto p-2 max-md:pt-0">
           <DialogHeader className="w-[95%] mt-6">
             <DialogTitle className="font-GothamMedium text-lg">
               {data?.title}
