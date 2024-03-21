@@ -4,10 +4,9 @@ import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
 import PrimaryBtn from "@/components/PrimaryBtn";
 import products from "../../../../public/data/products";
-import Image from "next/image";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import { useState } from "react";
+import {  useState } from "react";
 import QuantityBtn from "@/components/QuantityBtn";
 import {
   Carousel,
@@ -17,24 +16,57 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import SizeChart from "@/components/Layovers/SizeChart";
+import CartMenu from "@/components/Layovers/CartMenu";
 
 export default function Page({ params }) {
   const productDetails = products.filter((val) => val._id === params.slug)[0];
   const recommendedProducts = products
     .filter((val) => val._id !== params.slug)
     .slice(0, 4);
+  // let cartItems=JSON.parse(localStorage.getItem("cartItems") || "[]");
 
-  const [count, setCount] = useState(1);
+  const [quantity, setQuantity] = useState(1);
+  const [openCart, setOpenCart] = useState(false);
+
   const [selectedSize, setSelectedSize] = useState(productDetails.sizes[0]);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(
     productDetails?.variants ? 0 : null
   );
 
+  const checkOccurenceInLocalStorage = () => {
+    let cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    if (!cartItems?.length) {
+      return false;
+    } else if (cartItems.some((item) => item?._id === productDetails?._id)) {
+      return true;
+    } else return false;
+  };
+
+  const handleAddToCart = () => {
+    let items = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    let index = items.findIndex(
+      (item) => item?.productDetails?._id === productDetails?._id
+    );
+    if (index > -1 && items?.[index].size === selectedSize) {
+      const itemToBeUpdated = items[index];
+      itemToBeUpdated.quantity += quantity;
+      let arr = items;
+      arr.splice(index, 1, itemToBeUpdated);
+      localStorage.setItem("cartItems", JSON.stringify(arr));
+    } else {
+      let itemDetails = {
+        productDetails,
+        quantity,
+        size: selectedSize,
+      };
+      items.unshift(itemDetails);
+      localStorage.setItem("cartItems", JSON.stringify(items));
+    }
+  };
+
   return (
     <main className="pb-10 px-[5%] md:px-[10%] w-full">
-      <div
-        className="mt-20 lg:mt-28 relative pb-3 border-b border-black/10 mb-4 flex flex-col lg:flex-row"
-      >
+      <div className="mt-20 lg:mt-28 relative pb-3 border-b border-black/10 mb-4 flex flex-col lg:flex-row">
         <div
           className={`lg:w-1/2 lg:pr-4 ${
             productDetails?.variants?.length > 2
@@ -96,11 +128,11 @@ export default function Page({ params }) {
                   Select Size
                 </p>
                 <SizeChart
-                  dialogTriggerComponent={()=>
+                  dialogTriggerComponent={() => (
                     <p className="text-[14px] cursor-pointer underline underline-offset-2 text-black font-GothamBold">
                       Size Chart &gt;
                     </p>
-                  }
+                  )}
                 />
               </div>
               <div className="flex gap-3 flex-wrap">
@@ -123,12 +155,22 @@ export default function Page({ params }) {
           <div className="flex gap-x-2 my-3">
             <QuantityBtn
               // customClasses="w-full"
-              count={count}
-              setterFunction={setCount}
+              count={quantity}
+              setterFunction={setQuantity}
             />
-            <button className="w-full bg-[#141414] text-base text-white py-3 font-GothamLight">
-              Add to cart
-            </button>
+            <CartMenu
+              customOpen={openCart}
+              openSetter={setOpenCart}
+              triggerComponent={() => (
+                <button
+                  className="w-full bg-[#141414] text-base text-white py-3 font-GothamLight"
+                  onClick={handleAddToCart}
+                >
+                  Add to cart
+                </button>
+              )}
+              closeComponent={() => <div>CLOSE THIS COMPONENT</div>}
+            />
           </div>
           <div className="font-GothamLight text-black/70 text-base py-3">
             {productDetails?.extraInformation}
