@@ -84,7 +84,7 @@ export default function QuickView({
   return (
     <Dialog>
       <DialogTrigger asChild>{dialogTriggerComponent()}</DialogTrigger>
-      <DialogContent className="w-[90vw] sm:max-w-[60vw] max-h-[60vh] no-scrollbar md:max-h-[80vh] overflow-y-auto lg:flex p-0 outline-none border-none rounded-none">
+      <DialogContent className="w-[90vw] sm:max-w-[60vw] max-h-[60vh] no-scrollbar md:max-h-[80vh] overflow-y-auto md:flex p-0 outline-none border-none rounded-none">
         <Image
           src={
             data?.variants
