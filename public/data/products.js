@@ -17,7 +17,7 @@ const products = [
       "The maroon velvet corset serves as the centerpiece, embracing the silhouette with opulent elegance. The rich, velvety texture adds a touch of regality, creating a sumptuous and tactile allure.",
     extraInformation:
       "This ensemble is a celebration of contrasts, where the softness of velvet meets the crispness of white, resulting in a harmonious blend of glamour and modernity. The combination of deep maroon and pure white creates a captivating visual harmony.",
-    price: "7,499",
+    price: 7499,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     img: RoyalScarlet,
     sizeNote:`Model is wearing a size 'XS' and is 5'7"`
@@ -25,7 +25,7 @@ const products = [
   {
     _id: "p2",
     title: "Crimson Skater Mini Dress",
-    price: "6,499",
+    price: 6499,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:
       " The off-shoulder design of the dress showcases a hint of sophistication while embracing a touch of flirtatious charm.",
@@ -36,7 +36,7 @@ const products = [
   {
     _id: "p3",
     title: "Radiant snowfall co-rd set",
-    price: "3,999",
+    price: 3999,
     description:
       "Opt for a crisp and modern aesthetic with a white puff sleeves crop top, adding a touch of feminity. Teaming it up with bold red short pants injects a burst of energy ans shoecases a lively, confident style that's perfect for casual outings for social gatherings.",
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
@@ -50,13 +50,13 @@ const products = [
     extraInformation:
       "The floor-length yoke pants in matching maroon brings a graceful flow to the silhouette, creating a harmonious balance between contemporary flair and classic grace.",
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
-    price: "5,499",
+    price: 5499,
     img: RoseateRadiance,
   },
   {
     _id: "p5",
     title: "Ruby Whimsy Fusion Set",
-    price: "4,499",
+    price: 4499,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     img: RubyWhimsy,
     description:
@@ -67,7 +67,7 @@ const products = [
   {
     _id: "p6",
     title: "Scarlet Elegance Set",
-    price: "6,499",
+    price: 6499,
     img: ScarletElegance,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:
@@ -78,7 +78,7 @@ const products = [
   {
     _id: "p7",
     title: "Whimsical Co-ord Set",
-    price: "4,999",
+    price: 4999,
     img: WhimsicalCoord,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:
@@ -88,7 +88,7 @@ const products = [
   {
     _id: "p8",
     title: "One-piece Chic Couture",
-    price: "4,499",
+    price: 4499,
     img: OnePieceChic,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:
@@ -99,7 +99,7 @@ const products = [
   {
     _id: "p9",
     title: "Regal Blush Co-ord Set",
-    price: "5,499",
+    price: 5499,
     img: RegalBlush,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:
@@ -110,7 +110,7 @@ const products = [
   {
     _id: "p10",
     title: "Blaze Co-ord Set",
-    price: "3,999",
+    price: 3999,
     img: BlazeCoord,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:

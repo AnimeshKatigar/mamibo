@@ -6,7 +6,7 @@ import PrimaryBtn from "@/components/PrimaryBtn";
 import products from "../../../../public/data/products";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import {  useState } from "react";
+import {  useState, useContext } from "react";
 import QuantityBtn from "@/components/QuantityBtn";
 import {
   Carousel,
@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/carousel";
 import SizeChart from "@/components/Layovers/SizeChart";
 import CartMenu from "@/components/Layovers/CartMenu";
+import { CartContext } from "@/components/Contexts/CartContext";
 
 export default function Page({ params }) {
   const productDetails = products.filter((val) => val._id === params.slug)[0];
@@ -27,6 +28,7 @@ export default function Page({ params }) {
 
   const [quantity, setQuantity] = useState(1);
   const [openCart, setOpenCart] = useState(false);
+  const { cartItems, wishList ,addToCart, addToWishlist, setCartItems } = useContext(CartContext);
 
   const [selectedSize, setSelectedSize] = useState(productDetails.sizes[0]);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(
@@ -34,7 +36,6 @@ export default function Page({ params }) {
   );
 
   const checkOccurenceInLocalStorage = () => {
-    let cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
     if (!cartItems?.length) {
       return false;
     } else if (cartItems.some((item) => item?._id === productDetails?._id)) {
@@ -43,24 +44,23 @@ export default function Page({ params }) {
   };
 
   const handleAddToCart = () => {
-    let items = JSON.parse(localStorage.getItem("cartItems") || "[]");
-    let index = items.findIndex(
+    let index = cartItems?.findIndex(
       (item) => item?.productDetails?._id === productDetails?._id
     );
-    if (index > -1 && items?.[index].size === selectedSize) {
-      const itemToBeUpdated = items[index];
+    if (index > -1 && cartItems?.[index].size === selectedSize) {
+      const itemToBeUpdated = cartItems[index];
       itemToBeUpdated.quantity += quantity;
-      let arr = items;
+      let arr = cartItems;
       arr.splice(index, 1, itemToBeUpdated);
-      localStorage.setItem("cartItems", JSON.stringify(arr));
+      setCartItems(arr)
     } else {
       let itemDetails = {
         productDetails,
         quantity,
         size: selectedSize,
       };
-      items.unshift(itemDetails);
-      localStorage.setItem("cartItems", JSON.stringify(items));
+      addToCart(itemDetails)
+      // localStorage.setItem("cartItems", JSON.stringify(items));
     }
   };
 

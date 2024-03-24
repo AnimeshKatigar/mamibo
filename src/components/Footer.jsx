@@ -34,7 +34,6 @@ const Footer = () => {
   ];
 
   return (
-    <Reveal>
       <footer className="w-full bg-[#eeeeee] py-6 text-center">
         <Reveal>
           <Image src={logo} alt="logo" className="w-1/3 mx-auto" />
@@ -44,6 +43,8 @@ const Footer = () => {
             <p>Exclusive Service.</p>
           </div>
         </Reveal>
+        <Reveal>
+
         <div className="relative w-1/2 text-center mx-auto transition-all">
           <input
             {...register("email", {
@@ -115,8 +116,9 @@ const Footer = () => {
           © {new Date().getFullYear()} <span className="text-lg my-2">|</span>{" "}
           MAMIBO
         </p>
+        </Reveal>
+
       </footer>
-    </Reveal>
   );
 };
 

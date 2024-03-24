@@ -11,13 +11,13 @@ const products = [
     extraInformation:
       "The floor-length yoke pants in matching maroon brings a graceful flow to the silhouette, creating a harmonious balance between contemporary flair and classic grace.",
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
-    price: "5499",
+    price: 5499,
     img: RoseateRadiance,
   },
   {
     _id: "p5",
     title: "Ruby Whimsy Fusion Set",
-    price: "4499",
+    price: 4499,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     img: RubyWhimsy,
     description:
@@ -28,7 +28,7 @@ const products = [
   {
     _id: "p6",
     title: "Scarlet Elegance Set",
-    price: "6499",
+    price: 6499,
     img: ScarletElegance,
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     description:
