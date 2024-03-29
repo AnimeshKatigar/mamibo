@@ -17,7 +17,10 @@ export default function Home() {
         <Image
           src={LandingPage}
           alt="LandingPage"
-          className="w-full object-cover pt-10"
+          className="w-full object-cover max-sm:pt-14 pt-10"
+          placeholder="blur"
+          loading="eager"
+          priority
         />
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 font-GothamMedium  text-black">
           The Essence of Beauty!

@@ -92,6 +92,8 @@ const WelcomeModal = () => {
             src={WelcomeImage}
             alt="welcome-img"
             className="w-full aspect-[3/4] md:w-[45%]"
+            placeholder="blur"
+            loading="eager"
           />}
         </DialogContent>
       </Dialog>

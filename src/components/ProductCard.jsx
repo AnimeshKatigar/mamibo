@@ -65,37 +65,41 @@ const ProductCard = ({ singlePhoto = false, details }) => {
               }
               className="w-full aspect-[3/4] object-fit"
               alt="image"
+              placeholder="blur"
+              // loading="eager"
             />
           </Link>
         </div>
-        {!isDesktop && <div className="flex bottom-0 justify-center divide-x border-b border-x w-full">
-          <QuickView
-            dialogTriggerComponent={() => (
-              <div className="transition-all py-2 justify-center items-center gap-x-2 text-black/60 whitespace-nowrap flex w-1/2">
-                <Eye size={22} />
-                {/* Quick view */}
-              </div>
-            )}
-            data={details}
-            dialogCloseComponent={() => <button>Close</button>}
-          />
-          <QuickView
-            dialogTriggerComponent={() => (
-              <div className="transition-all py-2 justify-center items-center gap-x-2 text-black/60 whitespace-nowrap flex w-1/2">
-                <ShoppingBag size={22} />
-                {/* Quick Shop */}
-              </div>
-            )}
-            data={details}
-            dialogCloseComponent={() => <button>Close</button>}
-          />
-        </div>}
+        {!isDesktop && (
+          <div className="flex bottom-0 justify-center divide-x border-b border-x w-full">
+            <QuickView
+              dialogTriggerComponent={() => (
+                <div className="transition-all py-2 justify-center items-center gap-x-2 text-black/60 whitespace-nowrap flex w-1/2">
+                  <Eye size={22} />
+                  {/* Quick view */}
+                </div>
+              )}
+              data={details}
+              dialogCloseComponent={() => <button>Close</button>}
+            />
+            <QuickView
+              dialogTriggerComponent={() => (
+                <div className="transition-all py-2 justify-center items-center gap-x-2 text-black/60 whitespace-nowrap flex w-1/2">
+                  <ShoppingBag size={22} />
+                  {/* Quick Shop */}
+                </div>
+              )}
+              data={details}
+              dialogCloseComponent={() => <button>Close</button>}
+            />
+          </div>
+        )}
       </div>
       <Link href={link}>
         <div className="my-4">
           <h4 className="font-GothamBlack text-sm mb-0.5">{details.title}</h4>
           <p className="font-GothamMedium text-sm text-black/60">
-            ₹ {details.price}
+            ₹ {details?.price?.toLocaleString("en-IN")}
           </p>
         </div>
       </Link>
