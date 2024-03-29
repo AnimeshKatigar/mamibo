@@ -18,6 +18,7 @@ import {
 import SizeChart from "@/components/Layovers/SizeChart";
 import CartMenu from "@/components/Layovers/CartMenu";
 import { CartContext } from "@/components/Contexts/CartContext";
+import Image from "next/image";
 
 export default function Page({ params }) {
   const productDetails = products.filter((val) => val._id === params.slug)[0];
@@ -98,10 +99,11 @@ export default function Page({ params }) {
                     className="pl-4 md:basis-1/2 lg:basis-1/3"
                     key={variant.variant}
                   >
-                    <img
-                      src={variant.img?.src}
-                      alt="Other Product Image 1"
-                      className="w-full object-contain"
+                    <Image
+                     src={variant.img?.src}
+                     alt="Other Product Image 1"
+                     className="w-full object-contain"
+                    placeholder="blur"
                     />
                   </CarouselItem>
                 ))}
@@ -160,6 +162,7 @@ export default function Page({ params }) {
             />
             <CartMenu
               customOpen={openCart}
+              tabToOpen={1}
               openSetter={setOpenCart}
               triggerComponent={() => (
                 <button
@@ -169,7 +172,6 @@ export default function Page({ params }) {
                   Add to cart
                 </button>
               )}
-              closeComponent={() => <div>CLOSE THIS COMPONENT</div>}
             />
           </div>
           <div className="font-GothamLight text-black/70 text-base py-3">

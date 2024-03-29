@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useContext, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   Sheet,
   SheetClose,
@@ -17,14 +18,16 @@ import Lottie from "react-lottie-player";
 import Link from "next/link";
 import emptyCartJson from "../../../public/assets/animationFiles/EmptyCart.json";
 import EmptyWishlist from "../../../public/assets/animationFiles/EmptyWishlist";
+import { AnimatePresence } from "framer-motion";
 
 const CartMenu = ({
   triggerComponent,
   closeComponent,
   customOpen,
   openSetter,
+  tabToOpen = 0,
 }) => {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(tabToOpen);
   const { cartItems, wishList, setCartItems } = useContext(CartContext);
 
   const tabs = [
@@ -75,7 +78,7 @@ const CartMenu = ({
     setCartItems([...items]);
   };
 
-  function CartItems() {
+  const CartItems = () => {
     return (
       <>
         {cartItems?.length ? (
@@ -92,7 +95,10 @@ const CartMenu = ({
                   height={180}
                 />
                 <div className="overflow-hidden">
-                  <h4 className="text-ellipsis overflow-hidden font-medium text-sm sm:text-base whitespace-nowrap">
+                  <h4
+                    title={item?.productDetails?.title}
+                    className="text-ellipsis overflow-hidden font-medium text-sm sm:text-base whitespace-nowrap"
+                  >
                     {item?.productDetails?.title}
                   </h4>
                   <h4 className="text-ellipsis overflow-hidden font-medium text-sm sm:text-base mt-1">
@@ -124,7 +130,7 @@ const CartMenu = ({
                   </div>
                   {item?.quantity > 1 && (
                     <h4 className="text-ellipsis overflow-hidden font-medium text-sm sm:text-base mt-2">
-                      Total - ₹
+                      Total: ₹
                       {(
                         item.productDetails.price * item.quantity
                       ).toLocaleString("en-IN")}
@@ -159,7 +165,7 @@ const CartMenu = ({
         )}
       </>
     );
-  }
+  };
 
   function WishlistItems() {
     return (
@@ -185,7 +191,11 @@ const CartMenu = ({
                     ₹ {item?.productDetails?.price.toLocaleString("en-IN")}
                   </h4>
                 </div>
-                <Heart fill="#ea4343" className="cursor-pointer" color="#ea4343"/>
+                <Heart
+                  fill="#ea4343"
+                  className="cursor-pointer"
+                  color="#ea4343"
+                />
               </div>
             ))}
           </>
@@ -225,7 +235,7 @@ const CartMenu = ({
           <div className="px-2 lg:px-4">
             <SheetHeader>
               <SheetTitle className="font-GothamMedium text-lg mb-2">
-                {activeTab===1 ? "Shopping Cart" : "Your Wishlist"}
+                {activeTab === 1 ? "Shopping Cart" : "Your Wishlist"}
               </SheetTitle>
             </SheetHeader>
             <div className="flex w-full justify-between border divide-x divide-[#14141454] border-[#14141454]">
@@ -247,7 +257,27 @@ const CartMenu = ({
             </div>
           </div>
           <div className="flex-grow overflow-auto pb-2 px-2 lg:px-4">
-            {activeTab === 1 ? <CartItems /> : <WishlistItems />}
+            {activeTab === 1 ? (
+              <AnimatePresence>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <CartItems />
+                </motion.div>
+              </AnimatePresence>
+            ) : (
+              <AnimatePresence>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <WishlistItems />
+                </motion.div>
+              </AnimatePresence>
+            )}
           </div>
           {cartItems?.length > 0 && activeTab === 1 && (
             <div className="w-full bg-[#eeeeee] p-3">
