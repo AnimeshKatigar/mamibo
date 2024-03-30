@@ -230,7 +230,7 @@ const CartMenu = ({
     <Sheet {...sheetProps}>
       <SheetTrigger asChild>{triggerComponent()}</SheetTrigger>
       {/* {customOpen ?triggerComponent() :<SheetTrigger asChild>{triggerComponent()}</SheetTrigger>} */}
-      <SheetContent className="max-md:w-[90%] shadow-2xl  px-0 p-o">
+      <SheetContent className="max-md:w-[90%] shadow-2xl px-0 max-h-dvh">
         <div className="flex flex-col h-[calc(100vh-30px)]">
           <div className="px-2 lg:px-4">
             <SheetHeader>
