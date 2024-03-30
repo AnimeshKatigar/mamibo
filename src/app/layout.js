@@ -4,11 +4,13 @@ import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer";
 import WelcomeModal from "@/components/Layovers/WelcomeModal";
 import { CartProvider } from "@/components/Contexts/CartContext";
+import { Toaster } from "@/components/ui/sonner";
+import HolyLoader from "holy-loader";
 
 export const metadata = {
   title: "MAMIBO",
-  description: "A Jewellery Website",
-  keywords: ["Fashion", "Outfits", "customized dresses", "Dress", "Gen Z"],
+  description: "A Fashion Website",
+  keywords: ["Fashion", "Outfits", "Customized Dresses", "Dress", "Gen Z"],
 };
 
 const montserrat = Montserrat({
@@ -30,11 +32,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <CartProvider>
+        <HolyLoader color="#fb5987" />
         <body className={`${montserrat.className} no-scrollbar`}>
           <WelcomeModal />
           <Navbar />
           {children}
           <Footer />
+          <Toaster richColors />
         </body>
       </CartProvider>
     </html>
