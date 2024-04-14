@@ -84,13 +84,13 @@ const Footer = () => {
           <p className="text-red">{errors?.email?.message}</p>
         )}
         <div className="md:flex gap-x-4 px-[5%] border-t border-black/10 mt-8 pt-4 justify-around">
-          <div className="w-full md:w-1/3 px-2 text-left flex flex-col gap-3 text-black/70 font-GothamLight my-3 md:my-0">
+          <div className="w-full md:w-1/3 px-2 text-left flex flex-col gap-3 my-3 md:my-0">
             <h3 className="text-black">Just in Case</h3>
             {informaticDocs.map((val) => (
               <Link
                 key={val.path}
                 href={val.path}
-                className="hover:text-black transition-all text-black/60 w-fit"
+                className="hover:text-black/80 transition-all text-black/60 w-fit"
               >
                 {val.label}
               </Link>
@@ -98,7 +98,7 @@ const Footer = () => {
           </div>
           <div className="w-full md:w-1/3 px-2 text-left text-black">
             <h3>About Us</h3>
-            <p className="text-justify italics font-GothamLight mt-3 text-black/60">
+            <p className="text-justify italics  mt-3 text-black/60">
               It is a fashion brand with contemporary indo-western style form
               that highlights the shape of the beauty essence of the body.
               Fabrics have beautiful shine, flawless, subtle, lightweight
