@@ -28,7 +28,7 @@ const CartMenu = ({
   tabToOpen = 0,
 }) => {
   const [activeTab, setActiveTab] = useState(tabToOpen);
-  const { cartItems, wishList, setCartItems } = useContext(CartContext);
+  const { cartItems, wishList, setCartItems, removeFromWishlist } = useContext(CartContext);
 
   const tabs = [
     {
@@ -173,7 +173,7 @@ const CartMenu = ({
       <>
         {wishList?.length ? (
           <>
-            {wishList.map((item, i) => (
+            {wishList.map((item) => (
               <div
                 className="flex relative gap-x-2 p-2 border-b border-[#e0e0e0] items-center"
                 key={item._id}
@@ -195,6 +195,7 @@ const CartMenu = ({
                 </div>
                 <Heart
                   fill="#ea4343"
+                  onClick={()=>removeFromWishlist(item?._id)}
                   className="cursor-pointer ml-auto"
                   color="#ea4343"
                 />

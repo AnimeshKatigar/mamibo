@@ -24,6 +24,7 @@ const SizeChart = ({ dialogTriggerComponent }) => {
         </DrawerHeader>
         <Image
           alt="size-chart"
+          placeholder="blur"
           src={sizechartimage}
           className="w-4/5 max-w-[600px]"
         />

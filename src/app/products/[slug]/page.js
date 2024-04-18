@@ -118,7 +118,7 @@ export default function Page({ params }) {
             {productDetails?.title}
           </h2>
           <p className="font-GothamLight text-lg text-black py-3 lg:py-5 border-b border-black/10">
-            ₹ {productDetails?.price}
+            ₹ {productDetails?.price?.toLocaleString("en-IN")}
           </p>
           <div className="font-GothamLight text-black/70 text-base py-3 ">
             {productDetails?.description}

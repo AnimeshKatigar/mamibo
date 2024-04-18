@@ -91,6 +91,7 @@ export default function QuickView({
               ? data.variants?.[selectedVariantIndex].img
               : data?.img
           }
+          placeholder="blur"
           alt="product-img"
           className="w-full aspect-[3/4] md:mt-auto md:w-1/2 p-3 md:p-0"
         />
@@ -100,7 +101,7 @@ export default function QuickView({
               {data?.title}
             </DialogTitle>
             <p className="font-GothamLight text-lg text-black pb-5 border-b border-black/10">
-              ₹ {data?.price}
+              ₹ {data?.price?.toLocaleString("en-IN")}
             </p>
             <DialogDescription className="line-clamp-4 text-ellipsis overflow-clip mt-4">
               {data?.description}

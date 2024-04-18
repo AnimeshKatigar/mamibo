@@ -10,7 +10,7 @@ import HolyLoader from "holy-loader";
 export const metadata = {
   title: "MAMIBO",
   description: "A Fashion Website",
-  keywords: ["Fashion", "Outfits", "Customized Dresses", "Dress", "Gen Z"],
+  keywords: ["Fashion", "Outfits", "Customized Dresses", "Dress", "Co-ord sets"],
 };
 
 const montserrat = Montserrat({
