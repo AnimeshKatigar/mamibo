@@ -90,6 +90,7 @@ const CartMenu = ({
               >
                 <Image
                   src={item?.productDetails?.img}
+                  placeholder="blur"
                   alt="product-img"
                   className="max-sm:max-w-[110px] object-cover sm:aspect-[3/4] sm:object-fit"
                   height={180}
@@ -175,25 +176,26 @@ const CartMenu = ({
             {wishList.map((item, i) => (
               <div
                 className="flex relative gap-x-2 p-2 border-b border-[#e0e0e0] items-center"
-                key={item?.productDetails._id}
+                key={item._id}
               >
                 <Image
-                  src={item?.productDetails?.img}
+                  src={item?.img}
                   alt="product-img"
+                  placeholder="blur"
                   className="max-sm:max-w-[110px] object-cover sm:aspect-[3/4] sm:object-fit"
                   height={180}
                 />
                 <div className="overflow-hidden">
-                  <h4 className="font-medium text-sm sm:text-base ">
-                    {item?.productDetails?.title}
+                  <h4 className="font-medium text-sm sm:text-base line-clamp-2">
+                    {item?.title}
                   </h4>
                   <h4 className="text-ellipsis overflow-hidden font-medium text-sm sm:text-base mt-1">
-                    ₹ {item?.productDetails?.price.toLocaleString("en-IN")}
+                    ₹ {item?.price.toLocaleString("en-IN")}
                   </h4>
                 </div>
                 <Heart
                   fill="#ea4343"
-                  className="cursor-pointer"
+                  className="cursor-pointer ml-auto"
                   color="#ea4343"
                 />
               </div>

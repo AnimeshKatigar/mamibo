@@ -43,7 +43,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromWishlist = (id) => {
-    setWishList(wishList.filter((item) => item.productDetails._id !== id));
+    setWishList(wishList.filter((item) => item._id !== id));
   };
 
   return (
