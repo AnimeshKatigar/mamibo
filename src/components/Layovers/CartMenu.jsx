@@ -25,10 +25,11 @@ const CartMenu = ({
   closeComponent,
   customOpen,
   openSetter,
-  tabToOpen = 0,
+  tabToOpen = 1,
 }) => {
   const [activeTab, setActiveTab] = useState(tabToOpen);
-  const { cartItems, wishList, setCartItems, removeFromWishlist } = useContext(CartContext);
+  const { cartItems, wishList, setCartItems, removeFromWishlist } =
+    useContext(CartContext);
 
   const tabs = [
     {
@@ -195,7 +196,7 @@ const CartMenu = ({
                 </div>
                 <Heart
                   fill="#ea4343"
-                  onClick={()=>removeFromWishlist(item?._id)}
+                  onClick={() => removeFromWishlist(item?._id)}
                   className="cursor-pointer ml-auto"
                   color="#ea4343"
                 />

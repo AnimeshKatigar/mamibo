@@ -142,6 +142,7 @@ const Navbar = () => {
           triggerComponent={() => (
             <Image
               src={BagIcon}
+              id="cart-sheet-trigger"
               className="hover:scale-110 transition-all duration-200 cursor-pointer"
               alt="cart"
             />

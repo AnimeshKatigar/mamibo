@@ -6,7 +6,7 @@ import PrimaryBtn from "@/components/PrimaryBtn";
 import products from "../../../../public/data/products";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import {  useState, useContext } from "react";
+import { useState, useContext } from "react";
 import QuantityBtn from "@/components/QuantityBtn";
 import {
   Carousel,
@@ -19,6 +19,7 @@ import SizeChart from "@/components/Layovers/SizeChart";
 import CartMenu from "@/components/Layovers/CartMenu";
 import { CartContext } from "@/components/Contexts/CartContext";
 import Image from "next/image";
+import { toast } from "sonner";
 
 export default function Page({ params }) {
   const productDetails = products.filter((val) => val._id === params.slug)[0];
@@ -29,7 +30,8 @@ export default function Page({ params }) {
 
   const [quantity, setQuantity] = useState(1);
   const [openCart, setOpenCart] = useState(false);
-  const { cartItems, wishList ,addToCart, addToWishlist, setCartItems } = useContext(CartContext);
+  const { cartItems, wishList, addToCart, addToWishlist, setCartItems } =
+    useContext(CartContext);
 
   const [selectedSize, setSelectedSize] = useState(productDetails.sizes[0]);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(
@@ -53,16 +55,17 @@ export default function Page({ params }) {
       itemToBeUpdated.quantity += quantity;
       let arr = cartItems;
       arr.splice(index, 1, itemToBeUpdated);
-      setCartItems(arr)
+      setCartItems(arr);
     } else {
       let itemDetails = {
         productDetails,
         quantity,
         size: selectedSize,
       };
-      addToCart(itemDetails)
+      addToCart(itemDetails);
       // localStorage.setItem("cartItems", JSON.stringify(items));
     }
+    toast.success("Added to the cart");
   };
 
   return (
@@ -100,10 +103,10 @@ export default function Page({ params }) {
                     key={variant.variant}
                   >
                     <Image
-                     src={variant.img?.src}
-                     alt="Other Product Image 1"
-                     className="w-full object-contain"
-                    placeholder="blur"
+                      src={variant.img?.src}
+                      alt="Other Product Image 1"
+                      className="w-full object-contain"
+                      placeholder="blur"
                     />
                   </CarouselItem>
                 ))}

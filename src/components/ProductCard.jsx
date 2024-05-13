@@ -7,6 +7,7 @@ import { useContext } from "react";
 import useMediaQuery from "@/utils/useMediaQuery";
 import { Eye, Heart, ShoppingBag } from "lucide-react";
 import { CartContext } from "@/components/Contexts/CartContext";
+import { toast } from "sonner";
 
 const ProductCard = ({ singlePhoto = false, details }) => {
   const link = `/products/${details?._id}`;
@@ -26,6 +27,7 @@ const ProductCard = ({ singlePhoto = false, details }) => {
       removeFromWishlist(details?._id);
     } else {
       addToWishlist(details);
+      toast.success("Added to Wishlist");
     }
   };
 
@@ -53,7 +55,11 @@ const ProductCard = ({ singlePhoto = false, details }) => {
             <>
               <div className="absolute z-10 right-5 top-5">
                 <div
-                  className={`rounded-full ${checkWishlistOccurence() ? "bg-red-500":"bg-white hover:bg-[#141414]"} p-2 transition-all group `}
+                  className={`rounded-full ${
+                    checkWishlistOccurence()
+                      ? "bg-red-500"
+                      : "bg-white hover:bg-[#141414]"
+                  } p-2 transition-all group `}
                   onClick={handleWishlistAction}
                 >
                   <Heart

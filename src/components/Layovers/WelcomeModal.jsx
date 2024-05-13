@@ -9,6 +9,7 @@ import WelcomeImage from "../../../public/assets/images/WelcomeImage.jpg";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { toast } from "sonner";
+import { Clipboard } from "lucide-react";
 
 const Confetti = dynamic(() => import("react-confetti"), {
   ssr: false,
@@ -40,7 +41,7 @@ const InitialContent = ({
   };
   return (
     <>
-      <h2 className="text-2xl mb-2 text-[#6f3b1a] font-bold">Welcome</h2>
+      <h2 className="text-2xl mb-2 text-[#6f3b1a] font-bold">Welcome!!</h2>
       <p className="text-sm text-[#6f3b1ac4] my-7 w-4/5 mx-auto font-semibold">
         Subscribe to our newsletter and get exciting offers!
       </p>
@@ -86,7 +87,7 @@ const InitialContent = ({
 
 const SuccessContent = ({ handleModalClose }) => {
   const copyToClipboard = () => {
-    navigator.clipboard.writeText("FREE10");
+    navigator.clipboard.writeText("GET10");
     toast.success("The code is copied to the clipboard");
   };
   return (
@@ -99,10 +100,11 @@ const SuccessContent = ({ handleModalClose }) => {
         Please use your below coupon at the checkout page
       </p>
       <div
-        className="border-dashed border-2 border-[#6f3b1a] text-[#6f3b1a] py-1 w-full cursor-pointer select-none"
+        className="flex gap-x-3 px-1 items-center justify-center border-dashed border-2 border-[#6f3b1a] text-[#6f3b1a] py-1 w-full cursor-pointer select-none"
         onClick={copyToClipboard}
       >
-        GET10
+        <h3 className="w-full">GET10</h3>
+        <Clipboard className="ml-auto" />
       </div>
       <Link
         onClick={handleModalClose}

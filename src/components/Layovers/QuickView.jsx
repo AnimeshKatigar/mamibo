@@ -22,9 +22,12 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import QuantityBtn from "../QuantityBtn";
 import Link from "next/link";
+import { toast } from "sonner";
+import { CartContext } from "@/components/Contexts/CartContext";
+import CartMenu from "@/components/Layovers/CartMenu";
 
 export default function QuickView({
   dialogTriggerComponent,
@@ -62,9 +65,41 @@ export default function QuickView({
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(
     data?.variants ? 0 : null
   );
-  const [count, setCount] = useState(1);
+  const [forceClose, setForceClose] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [openCart, setOpenCart] = useState(false);
+  const { cartItems, wishList, addToCart, addToWishlist, setCartItems } =
+    useContext(CartContext);
+  const [selectedSize, setSelectedSize] = useState(data.sizes[0]);
 
   const link = `/products/${data?._id}`;
+
+  const handleAddToCart = () => {
+    let index = cartItems?.findIndex(
+      (item) => item?.productDetails?._id === data?._id
+    );
+    if (index > -1 && cartItems?.[index].size === selectedSize) {
+      const itemToBeUpdated = cartItems[index];
+      itemToBeUpdated.quantity += quantity;
+      let arr = cartItems;
+      arr.splice(index, 1, itemToBeUpdated);
+      setCartItems(arr);
+    } else {
+      let itemDetails = {
+        productDetails: data,
+        quantity,
+        size: selectedSize,
+      };
+      addToCart(itemDetails);
+      // localStorage.setItem("cartItems", JSON.stringify(items));
+    }
+    let cartSheet = document.getElementById("cart-sheet-trigger");
+    let currentQuickViewModal = document.getElementById("dialog-modal-close");
+    currentQuickViewModal.click();
+    cartSheet.click();
+    toast.success("Added to the cart");
+  };
+  // let props = forceClose ? { open: false } : {};
 
   // if (!isDesktop)
   //   return (
@@ -83,6 +118,7 @@ export default function QuickView({
   //   );
   return (
     <Dialog>
+      {/* <Dialog {...props}> */}
       <DialogTrigger asChild>{dialogTriggerComponent()}</DialogTrigger>
       <DialogContent className="w-[90vw] sm:max-w-[60vw] max-h-[60vh] no-scrollbar md:max-h-[80vh] overflow-y-auto md:flex p-0 outline-none border-none rounded-none">
         <Image
@@ -130,17 +166,49 @@ export default function QuickView({
                 </div>
               </>
             )}
+            {data?.sizes && (
+              <>
+                {/* <div className="flex gap-x-10 items-center justify-between pr-3 mb-3"> */}
+                <p className="text-[14px] text-slate-500 font-GothamBold my-2">
+                  Select Size
+                </p>
+                {/* </div> */}
+                <div className="flex gap-3 flex-wrap">
+                  {data.sizes.map((size) => (
+                    <div
+                      className={`${
+                        size !== selectedSize
+                          ? "text-[#141414] bg-white"
+                          : "bg-[#141414] text-white"
+                      } transition-all cursor-pointer border border-[#141414] w-fit rounded-full px-2 py-1 text-sm font-GothamLight `}
+                      key={size}
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size}
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
             <div className="flex gap-x-2 my-3">
-              <QuantityBtn
-                // customClasses="w-full"
-                count={count}
-                setterFunction={setCount}
+              <QuantityBtn count={quantity} setterFunction={setQuantity} />
+              <CartMenu
+                // customOpen={openCart}
+                tabToOpen={1}
+                openSetter={setOpenCart}
+                triggerComponent={() => (
+                  <button
+                    className="w-full bg-[#141414] text-base text-white py-3 font-GothamLight"
+                    onClick={handleAddToCart}
+                  >
+                    Add to cart
+                  </button>
+                )}
               />
-              <button className="w-full bg-[#141414] text-base text-white py-3 font-GothamLight">
-                Add to cart
-              </button>
             </div>
           </div>
+
           {/* <div
             className="product-description-html-dev font-GothamLight text-base"
             dangerouslySetInnerHTML={{ __html: data?.html }}
