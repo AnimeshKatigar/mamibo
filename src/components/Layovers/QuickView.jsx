@@ -72,7 +72,7 @@ export default function QuickView({
     useContext(CartContext);
   const [selectedSize, setSelectedSize] = useState(data.sizes[0]);
 
-  const link = `/products/${data?._id}`;
+  const link = `/products/${data?.href}`;
 
   const handleAddToCart = () => {
     let index = cartItems?.findIndex(

@@ -22,9 +22,9 @@ import Image from "next/image";
 import { toast } from "sonner";
 
 export default function Page({ params }) {
-  const productDetails = products.filter((val) => val._id === params.slug)[0];
+  const productDetails = products.filter((val) => val.href === params.slug)[0];
   const recommendedProducts = products
-    .filter((val) => val._id !== params.slug)
+    .filter((val) => val.href !== params.slug)
     .slice(0, 4);
   // let cartItems=JSON.parse(localStorage.getItem("cartItems") || "[]");
 

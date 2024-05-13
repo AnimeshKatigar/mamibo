@@ -10,7 +10,7 @@ import { CartContext } from "@/components/Contexts/CartContext";
 import { toast } from "sonner";
 
 const ProductCard = ({ singlePhoto = false, details }) => {
-  const link = `/products/${details?._id}`;
+  const link = `/products/${details?.href}`;
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const { wishList, addToWishlist, removeFromWishlist } =
     useContext(CartContext);
