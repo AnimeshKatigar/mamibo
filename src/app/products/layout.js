@@ -12,8 +12,6 @@ export const metadata = {
   ],
 };
 
-const ProductLayout = ({ children }) => {
+export default function ProductLayout({ children }) {
   return <>{children}</>;
-};
-
-export default ProductLayout;
+}

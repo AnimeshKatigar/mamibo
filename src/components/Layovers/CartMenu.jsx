@@ -290,9 +290,12 @@ const CartMenu = ({
                 <h2>₹{calculateSubTotal()?.toLocaleString("en-IN")}</h2>
               </div>
               <SheetClose asChild className="mt-3">
-                <div className="bg-[#222] text-white text-center cursor-pointer py-2 w-full">
+                <Link
+                  className="bg-[#222] text-white text-center cursor-pointer py-2 w-full"
+                  href="/cart"
+                >
                   View Cart
-                </div>
+                </Link>
               </SheetClose>
               {/* <SheetClose asChild>{closeComponent()}</SheetClose> */}
             </div>
