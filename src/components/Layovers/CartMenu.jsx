@@ -291,7 +291,7 @@ const CartMenu = ({
               </div>
               <SheetClose asChild className="mt-3">
                 <Link
-                  className="bg-[#222] text-white text-center cursor-pointer py-2 w-full"
+                  className="bg-[#222] text-white text-center cursor-pointer py-2 w-full flex items-center justify-center"
                   href="/cart"
                 >
                   View Cart

@@ -1,17 +1,44 @@
 "use client";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
-import Lottie from "react-lottie-player";
-import emptyCartJson from "../../../public/assets/animationFiles/EmptyCart.json";
-import Link from "next/link";
 import { useState, useContext, useEffect } from "react";
 import { CartContext } from "@/components/Contexts/CartContext";
 import { Trash, Minus, Plus, PlusCircle } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function Page() {
-  const { cartItems, setCartItems } = useContext(CartContext);
   const [voucherCode, setVoucherCode] = useState("");
+  const { cartItems, setCartItems } = useContext(CartContext);
   const [discount, setDiscount] = useState(0);
+  const [address, setAddress] = useState({
+    name: "",
+    street: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    country: "",
+  });
+  const [paymentMethod, setPaymentMethod] = useState("creditCard");
+
+  const addressFields = [
+    { name: "name", placeholder: "Full Name", type: "text" },
+    { name: "street", placeholder: "Street Address", type: "text" },
+    { name: "city", placeholder: "City", type: "text" },
+    { name: "state", placeholder: "State/Province", type: "text" },
+    { name: "postalCode", placeholder: "Postal Code", type: "text" },
+    { name: "country", placeholder: "Country", type: "text" },
+  ];
+
+  const paymentMethods = [
+    { value: "creditCard", label: "Credit Card" },
+    { value: "paypal", label: "PayPal" },
+    { value: "cod", label: "Cash on Delivery" },
+  ];
 
   const calculateTotal = () => {
     return cartItems?.reduce(
@@ -29,8 +56,14 @@ export default function Page() {
     }
   };
 
-  const total = calculateTotal();
-  const discountedTotal = total - total * discount;
+  const handleAddressChange = (e) => {
+    setAddress({ ...address, [e.target.name]: e.target.value });
+  };
+
+  const handlePaymentChange = (e) => {
+    setPaymentMethod(e.target.value);
+  };
+
   const increaseQuantity = (item) => {
     let index = cartItems.findIndex(
       (val) => val.productDetails?._id === item?.productDetails._id
@@ -66,10 +99,13 @@ export default function Page() {
     setCartItems([...items]);
   };
 
+  const total = calculateTotal();
+  const discountedTotal = total - total * discount;
+
   const CartItems = () => {
     return (
       <>
-        {cartItems.map((item, i) => (
+        {cartItems?.map((item, i) => (
           <div
             className="flex flex-col sm:flex-row relative gap-4 p-4 border-b border-gray-200"
             key={item?.productDetails._id}
@@ -143,7 +179,9 @@ export default function Page() {
       <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
       <div className="flex justify-between mb-2">
         <span className="text-gray-700">Subtotal</span>
-        <span className="text-gray-900">₹ {total.toLocaleString("en-IN")}</span>
+        <span className="text-gray-900">
+          ₹ {total?.toLocaleString("en-IN")}
+        </span>
       </div>
       <div className="flex justify-between mb-2">
         <span className="text-gray-700">Discount</span>
@@ -155,7 +193,7 @@ export default function Page() {
       <div className="flex justify-between mb-6">
         <span className="text-xl font-semibold">Total</span>
         <span className="text-xl font-semibold text-gray-900">
-          ₹ {discountedTotal.toLocaleString("en-IN")}
+          ₹ {discountedTotal?.toLocaleString("en-IN")}
         </span>
       </div>
       <div className="mb-6">
@@ -181,45 +219,74 @@ export default function Page() {
           </button>
         </div>
       </div>
-      <Link
-        className="w-full flex items-center justify-center bg-green-600 text-white py-3 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors"
-        href="/checkout"
-      >
+      <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors">
         Proceed to Checkout
-      </Link>
+      </button>
     </div>
   );
+
+  const sections = [
+    {
+      title: "Delivery Address",
+      render: () => (
+        <form className="grid gap-4">
+          {addressFields.map((field) => (
+            <input
+              key={field.name}
+              type={field.type}
+              name={field.name}
+              placeholder={field.placeholder}
+              value={address[field.name]}
+              onChange={handleAddressChange}
+              className="p-2 border border-gray-300 rounded-md focus:outline-none"
+            />
+          ))}
+        </form>
+      ),
+    },
+    {
+      title: "Payment Method",
+      render: () => (
+        <div className="grid gap-4">
+          {paymentMethods.map((method) => (
+            <label key={method.value} className="flex items-center">
+              <input
+                type="radio"
+                name="paymentMethod"
+                value={method.value}
+                checked={paymentMethod === method.value}
+                onChange={handlePaymentChange}
+                className="mr-2"
+              />
+              {method.label}
+            </label>
+          ))}
+        </div>
+      ),
+    },
+    { title: "Items", render: () => <CartItems /> },
+  ];
 
   return (
     <main className="pt-20 pb-10 px-[5%] md:px-[10%] w-full">
       <Reveal customClassName="my-8 flex justify-between px-2 items-center">
-        <h2 className="text-black text-2xl uppercase font-GothamBlack">Cart</h2>
+        <h2 className="text-black text-2xl uppercase font-GothamBlack">
+          Checkout
+        </h2>
       </Reveal>
-      {cartItems?.length ? (
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="flex-grow">
-            <CartItems />
-          </div>
-          <OrderSummary />
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex-grow">
+          <Accordion type="multiple" defaultValue={sections[0].title}>
+            {sections.map((section) => (
+              <AccordionItem key={section.title} value={section.title}>
+                <AccordionTrigger>{section.title}</AccordionTrigger>
+                <AccordionContent>{section.render()}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
-      ) : (
-        // <CartItems />
-        <div className="text-center flex flex-col justify-center items-center h-full w-full">
-          <Lottie
-            loop
-            animationData={emptyCartJson}
-            play
-            style={{ width: 150, height: 150 }}
-          />
-          <h3 className="text-base text-black/60">Your cart is empty</h3>
-          <Link
-            className="bg-[#141414] text-white cursor-pointer w-1/2 mx-auto mt-2 py-2"
-            href="/products"
-          >
-            Start Shopping
-          </Link>
-        </div>
-      )}
+        <OrderSummary />
+      </div>
     </main>
   );
 }
