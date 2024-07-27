@@ -171,18 +171,18 @@ export default function Page() {
             id="voucher"
             value={voucherCode}
             onChange={(e) => setVoucherCode(e.target.value)}
-            className="flex-grow w-full p-2 border border-gray-300 rounded-l-md focus:outline-none"
+            className="flex-grow w-full p-2 border border-black text-sm focus:outline-none"
           />
           <button
             onClick={applyVoucher}
-            className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors"
+            className="bg-[#2D2D2D]/90 text-white px-4 py-2 hover:bg-[#2D2D2D] transition-colors border border-[#2D2D2D]/90"
           >
             Apply
           </button>
         </div>
       </div>
       <Link
-        className="w-full flex items-center justify-center bg-green-600 text-white py-3 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors"
+        className="w-full flex items-center justify-center bg-black/80 text-white py-3 font-semibold text-lg hover:bg-black/90transition-colors"
         href="/checkout"
       >
         Proceed to Checkout
@@ -200,7 +200,7 @@ export default function Page() {
           <div className="flex-grow">
             <CartItems />
           </div>
-          <OrderSummary />
+          {OrderSummary()}
         </div>
       ) : (
         // <CartItems />

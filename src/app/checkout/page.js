@@ -1,15 +1,22 @@
 "use client";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { CartContext } from "@/components/Contexts/CartContext";
-import { Trash, Minus, Plus, PlusCircle } from "lucide-react";
+import { Trash, Minus, Plus, PlusCircle, Info } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import RadioButton from "@/components/RadioButton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function Page() {
   const [voucherCode, setVoucherCode] = useState("");
@@ -23,7 +30,7 @@ export default function Page() {
     postalCode: "",
     country: "",
   });
-  const [paymentMethod, setPaymentMethod] = useState("creditCard");
+  const [paymentMethod, setPaymentMethod] = useState("cashfree");
 
   const addressFields = [
     { name: "name", placeholder: "Full Name", type: "text" },
@@ -35,8 +42,7 @@ export default function Page() {
   ];
 
   const paymentMethods = [
-    { value: "creditCard", label: "Credit Card" },
-    { value: "paypal", label: "PayPal" },
+    { value: "cashfree", label: "Cashfree Payment" },
     { value: "cod", label: "Cash on Delivery" },
   ];
 
@@ -213,14 +219,14 @@ export default function Page() {
           />
           <button
             onClick={applyVoucher}
-            className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors"
+            className="bg-[#2D2D2D]/90 text-white px-4 py-2 hover:bg-[#2D2D2D] transition-colors border border-[#2D2D2D]/90"
           >
             Apply
           </button>
         </div>
       </div>
       <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors">
-        Proceed to Checkout
+        Pay now
       </button>
     </div>
   );
@@ -249,17 +255,73 @@ export default function Page() {
       render: () => (
         <div className="grid gap-4">
           {paymentMethods.map((method) => (
-            <label key={method.value} className="flex items-center">
-              <input
-                type="radio"
-                name="paymentMethod"
-                value={method.value}
-                checked={paymentMethod === method.value}
-                onChange={handlePaymentChange}
-                className="mr-2"
-              />
-              {method.label}
-            </label>
+            <div>
+              <div className="p-1 flex gap-x-3" key={method.value}>
+                <RadioButton
+                  // label={method.label}
+                  value={method.value}
+                  checked={paymentMethod === method.value}
+                  onChange={handlePaymentChange}
+                />
+                <div className="w-full flex-row justify-center">
+                  <div className="flex items-center justify-between">
+                    <h3 className="mb-0 leading-6 ">
+                      {method.label}{" "}
+                      {method.value === "cashfree" && (
+                        <TooltipProvider delayDuration={300}>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <Info size={14} className="ml-4" />
+                            </TooltipTrigger>
+                            <TooltipContent
+                              className="w-1/2 right-3"
+                              sideOffset={6}
+                              side="right"
+                            >
+                              <p className="text-sm">
+                                After clicking “Pay now”, you will be redirected
+                                to Cashfree Payment
+                                (UPI,Cards,Wallets,NetBanking) to complete your
+                                purchase securely.
+                              </p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      )}
+                    </h3>
+                    {method?.value === "cashfree" && (
+                      <div className="flex flex-wrap">
+                        <img
+                          src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/dcdfe7e1d5626b0a1dda.svg"
+                          alt="UPI"
+                          title="UPI"
+                          className="w-8 h-8"
+                        />
+                        <img
+                          src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/0169695890db3db16bfe.svg"
+                          alt="VISA"
+                          title="VISA"
+                          className="w-8 h-8"
+                        />
+                        <img
+                          src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/5e3b05b68f3d31b87e84.svg"
+                          alt="MASTERCARD"
+                          title="MASTERCARD"
+                          className="w-8 h-8"
+                        />
+                        <img
+                          src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/fe904f1307590b94f8e6.svg"
+                          alt="RUPAY"
+                          title="RUPAY"
+                          className="w-8 h-8"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  {method?.value === "cashfree" && "(UPI, Cards, NetBanking)"}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       ),
@@ -285,7 +347,7 @@ export default function Page() {
             ))}
           </Accordion>
         </div>
-        <OrderSummary />
+        {OrderSummary()}
       </div>
     </main>
   );
