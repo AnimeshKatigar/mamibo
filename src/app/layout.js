@@ -10,7 +10,13 @@ import HolyLoader from "holy-loader";
 export const metadata = {
   title: "MAMIBO",
   description: "A Fashion Website",
-  keywords: ["Fashion", "Outfits", "Customized Dresses", "Dress", "Co-ord sets"],
+  keywords: [
+    "Fashion",
+    "Outfits",
+    "Customized Dresses",
+    "Dress",
+    "Co-ord sets",
+  ],
 };
 
 const montserrat = Montserrat({
@@ -38,7 +44,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <Footer />
-          <Toaster richColors />
+          <Toaster />
         </body>
       </CartProvider>
     </html>
